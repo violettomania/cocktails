@@ -1,16 +1,13 @@
-export default function Cocktail() {
+export default function Cocktail({ name, image, info, glass }: Drink) {
   return (
     <article className='cocktail'>
       <div className='img-container'>
-        <img
-          src='https://www.thecocktaildb.com/images/media/drink/2x8thr1504816928.jpg'
-          alt='A1'
-        />
+        <img src={image} alt={name} />
       </div>
       <div className='cocktail-footer'>
-        <h3>A1</h3>
-        <h4>Cocktail glass</h4>
-        <p>Alcoholic</p>
+        <h3>{name}</h3>
+        <h4>{glass}</h4>
+        <p>{info}</p>
         <a className='btn btn-primary btn-details' href='/cocktail/17222'>
           details
         </a>

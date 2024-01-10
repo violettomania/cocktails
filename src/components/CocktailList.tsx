@@ -1,11 +1,17 @@
 import Cocktail from './Cocktail';
 
-export default function CocktailList() {
+interface CocktailListProps {
+  children: Drink[];
+}
+
+export default function CocktailList({ children }: CocktailListProps) {
   return (
     <section className='section'>
       <h2 className='section-title'>cocktails</h2>
       <div className='cocktails-center'>
-        <Cocktail />
+        {children.map((cocktail) => (
+          <Cocktail key={cocktail.id} {...cocktail} />
+        ))}
       </div>
     </section>
   );
