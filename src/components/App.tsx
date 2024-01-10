@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import Navbar from './Navbar';
 import Search from './Search';
-import Cocktail from './Cocktail';
 import CocktailList from './CocktailList';
 
 const url = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
