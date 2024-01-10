@@ -1,25 +1,16 @@
+import { useState } from 'react';
+import Navbar from './Navbar';
+
+const url = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+
 export default function App() {
+  const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState('a');
+  const [cocktails, setCocktails] = useState([]);
+
   return (
     <>
-      <nav className='navbar'>
-        <div className='nav-center'>
-          <a href='/'>
-            <img
-              src='/logo.5bb3b58efe44c44cee437fa462266c08.svg'
-              alt='cocktail db logo'
-              className='logo'
-            />
-          </a>
-          <ul className='nav-links'>
-            <li>
-              <a href='/'>home</a>
-            </li>
-            <li>
-              <a href='/about'>about</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+      <Navbar />
       <main>
         <section className='section search'>
           <form className='search-form'>
