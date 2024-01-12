@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import Navbar from '../components/Navbar';
 import Search from '../components/Search';
 import CocktailList from '../components/CocktailList';
 import Loading from '../components/Loading';
