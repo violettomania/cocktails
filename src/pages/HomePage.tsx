@@ -44,7 +44,6 @@ export default function HomePage() {
 
   return (
     <>
-      <Navbar />
       <main>
         <Search />
         {loading ? <Loading /> : <CocktailList>{cocktails}</CocktailList>}
