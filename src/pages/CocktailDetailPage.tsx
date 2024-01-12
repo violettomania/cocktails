@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import CocktailDetail from '../components/CocktailDetail';
 import Loading from '../components/Loading';
+import NoCocktailError from '../components/NoCocktailError';
 
 export default function CocktailDetailPage() {
   const [loading, setLoading] = useState(true);
@@ -53,5 +54,15 @@ export default function CocktailDetailPage() {
     getCocktail();
   }, [id]);
 
-  return <>{loading ? <Loading /> : <CocktailDetail {...cocktail} />}</>;
+  const renderCocktail = () => {
+    if (cocktail.name) {
+      if (loading) {
+        return <Loading />;
+      }
+      return <CocktailDetail {...cocktail} />;
+    }
+    return <NoCocktailError />;
+  };
+
+  return renderCocktail();
 }
