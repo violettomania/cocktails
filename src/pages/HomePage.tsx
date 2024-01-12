@@ -3,15 +3,13 @@ import Navbar from '../components/Navbar';
 import Search from '../components/Search';
 import CocktailList from '../components/CocktailList';
 import Loading from '../components/Loading';
-import { useParams } from 'react-router-dom';
 
 const url = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
 
-export default function Home() {
+export default function HomePage() {
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('a');
-  const [cocktails, setCocktails] = useState([]);
-  let { id } = useParams();
+  const [cocktails, setCocktails] = useState<Drink[]>([]);
 
   useEffect(() => {
     async function getCocktails() {

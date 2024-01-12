@@ -5,3 +5,13 @@ type Drink = {
   info: string;
   glass: string;
 };
+
+type DrinkDetails = {
+  name: string;
+  image: string;
+  info: string;
+  glass: string;
+  category: string;
+  instructions: string;
+  ingredients: string[];
+};
