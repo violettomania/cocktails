@@ -1,54 +1,18 @@
-import { useEffect, useState } from 'react';
-import Navbar from './Navbar';
-import Search from './Search';
-import CocktailList from './CocktailList';
-import Loading from './Loading';
-
-const url = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+import { Routes, Route } from 'react-router-dom';
+import Home from '../pages/Home';
+import CocktailDetail from '../pages/CocktailDetail';
+import About from '../pages/About';
+import Error from '../pages/Error';
 
 export default function App() {
-  const [loading, setLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState('a');
-  const [cocktails, setCocktails] = useState([]);
-
-  useEffect(() => {
-    async function getCocktails() {
-      try {
-        const response = await fetch(`${url}${searchTerm}`);
-        const data = await response.json();
-        const { drinks } = data;
-        if (drinks) {
-          const newCocktails = drinks.map((drink: any) => {
-            const { idDrink, strDrink, strDrinkThumb, strAlcoholic, strGlass } =
-              drink;
-            return {
-              id: idDrink,
-              name: strDrink,
-              image: strDrinkThumb,
-              info: strAlcoholic,
-              glass: strGlass,
-            };
-          });
-          setCocktails(newCocktails);
-        } else {
-          setCocktails([]);
-        }
-        setLoading(false);
-      } catch (error) {
-        console.error(error);
-        setLoading(false);
-      }
-    }
-    getCocktails();
-  }, [searchTerm]);
-
   return (
-    <>
-      <Navbar />
-      <main>
-        <Search />
-        {loading ? <Loading /> : <CocktailList>{cocktails}</CocktailList>}
-      </main>
-    </>
+    <div>
+      <Routes>
+        <Route path='*' element={<Error />} />
+        <Route path='/' element={<Home />} />
+        <Route path='cocktail/:id' element={<CocktailDetail />} />
+        <Route path='about' element={<About />} />
+      </Routes>
+    </div>
   );
 }
