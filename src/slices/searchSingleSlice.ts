@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import type { RootState } from '../store/store';
-import { fetchCocktail, setSearchTerm } from '../actions/fetchCocktails';
+import { fetchCocktail } from '../actions/fetchCocktails';
 
 interface SearchSingleState {
   searchTerm: string;
@@ -19,15 +19,12 @@ export const searchSingleSlice = createSlice({
   name: 'singleSearch',
   initialState,
   reducers: {
-    searchSingle: (state, action) => {
+    searchSingle: (state, action: PayloadAction<string>) => {
       state.searchTerm = action.payload;
     },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(setSearchTerm, (state, action: PayloadAction<string>) => {
-        state.searchTerm = action.payload;
-      })
       .addCase(fetchCocktail.pending, (state) => {
         state.loading = true;
       })
