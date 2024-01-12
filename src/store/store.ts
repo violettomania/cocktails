@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import searchReducer from '../slices/searchSlice';
+import searchSingleReducer from '../slices/searchSingleSlice';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
 const store = configureStore({
   reducer: {
     search: searchReducer,
+    searchSingle: searchSingleReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
 });
