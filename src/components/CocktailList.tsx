@@ -1,16 +1,16 @@
 import Cocktail from './Cocktail';
 
 interface CocktailListProps {
-  children: Drink[];
+  drinks: Drink[];
 }
 
-export default function CocktailList({ children }: CocktailListProps) {
+export default function CocktailList({ drinks }: CocktailListProps) {
   return (
     <section className='section'>
       <h2 className='section-title'>cocktails</h2>
       <div className='cocktails-center'>
-        {children.map((cocktail) => (
-          <Cocktail key={cocktail.id} {...cocktail} />
+        {drinks.map((drink) => (
+          <Cocktail key={drink.id} {...drink} />
         ))}
       </div>
     </section>
