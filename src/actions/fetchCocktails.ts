@@ -5,6 +5,7 @@ export const setSearchTerm = createAction<string>('cocktails/setSearchTerm');
 const cocktailsUrl =
   'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
 
+// TODO separate action for single search
 export const fetchCocktails = createAsyncThunk(
   'cocktails/fetchCocktails',
   async (searchTerm: string) => {
