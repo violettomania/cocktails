@@ -1,12 +1,18 @@
 import { useAppDispatch } from '../store/store';
 import { fetchCocktails } from '../actions/fetchCocktails';
 
+let timeout: number;
+const debounce = (func: Function, delay: number) => {
+  clearTimeout(timeout);
+  timeout = window.setTimeout(() => func(), delay);
+};
+
 export default function Search() {
   const dispatch = useAppDispatch();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newSearchTerm = e.target.value;
-    dispatch(fetchCocktails(newSearchTerm));
+    debounce(() => dispatch(fetchCocktails(newSearchTerm)), 300);
   };
 
   return (
