@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export default function Cocktail({ id, name, image, info, glass }: Drink) {
   return (
     <article className='cocktail'>
@@ -8,9 +10,9 @@ export default function Cocktail({ id, name, image, info, glass }: Drink) {
         <h3>{name}</h3>
         <h4>{glass}</h4>
         <p>{info}</p>
-        <a className='btn btn-primary btn-details' href={`cocktail/${id}`}>
+        <Link className='btn btn-primary btn-details' to={`cocktail/${id}`}>
           details
-        </a>
+        </Link>
       </div>
     </article>
   );
