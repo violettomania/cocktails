@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export default function CocktailDetail({
   name,
   image,
@@ -9,9 +11,9 @@ export default function CocktailDetail({
 }: DrinkDetails) {
   return (
     <section className='section cocktail-section'>
-      <a className='btn btn-primary' href='/'>
+      <Link className='btn btn-primary' to='/'>
         back home
-      </a>
+      </Link>
       <h2 className='section-title'>{name}</h2>
       <div className='drink'>
         <img src={image} alt={name} />
