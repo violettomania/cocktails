@@ -23,6 +23,10 @@ export const searchSlice = createSlice({
     search: (state, action: PayloadAction<string>) => {
       state.searchTerm = action.payload;
     },
+    reset: (state) => {
+      state.cocktails = [];
+      state.searchTerm = '';
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -40,7 +44,7 @@ export const searchSlice = createSlice({
   },
 });
 
-export const { search } = searchSlice.actions;
+export const { search, reset } = searchSlice.actions;
 
 export const selectSearch = (state: RootState) => state.search.searchTerm;
 

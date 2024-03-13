@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+import { useAppDispatch } from '../store/store';
+import { reset } from '../slices/searchSlice';
 
 export default function CocktailDetail({
   name,
@@ -9,9 +11,15 @@ export default function CocktailDetail({
   instructions,
   ingredients,
 }: DrinkDetails) {
+  const dispatch = useAppDispatch();
+
   return (
     <section className='section cocktail-section'>
-      <Link className='btn btn-primary' to='/'>
+      <Link
+        className='btn btn-primary'
+        to='/'
+        onClick={() => dispatch(reset())}
+      >
         back home
       </Link>
       <h2 className='section-title'>{name}</h2>
